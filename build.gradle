@@ -30,5 +30,6 @@ dependencies {
 	compile group: 'io.springfox', name: 'springfox-swagger2', version: '2.9.2'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	compile group: 'io.qala.datagen', name: 'qala-datagen', version: '2.5.1'
 	testImplementation 'io.projectreactor:reactor-test'
 }

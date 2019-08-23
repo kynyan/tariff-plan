@@ -13,10 +13,13 @@ import javax.validation.constraints.PositiveOrZero;
 @NoArgsConstructor
 @AllArgsConstructor
 public class MinutesPackageDto {
-    @PositiveOrZero
+    public static final String PACKAGE_NOTE = "Should not be negative";
+
+    @PositiveOrZero(message = PACKAGE_NOTE)
     @ApiModelProperty(example = "300")
     private Integer minutes;
-    @PositiveOrZero
+
+    @PositiveOrZero(message = PACKAGE_NOTE)
     @ApiModelProperty(example = "15")
-    private int daysLeft;
+    private Integer daysLeft;
 }

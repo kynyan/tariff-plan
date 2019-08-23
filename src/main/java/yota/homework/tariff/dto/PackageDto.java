@@ -3,8 +3,9 @@ package yota.homework.tariff.dto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.experimental.Accessors;
 
-@Getter @Setter
+@Getter @Setter @Accessors(chain = true)
 @NoArgsConstructor
 public class PackageDto {
     private InternetPackageDto internetPackage;

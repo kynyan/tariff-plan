@@ -1,38 +1,47 @@
 package yota.homework.tariff.dto;
 
 import io.swagger.annotations.ApiModelProperty;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-import javax.validation.constraints.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
-@Getter @Builder
+@Getter @Setter
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class UserDto {
-    private static final String PHONE_NUMBER_NOTE = "Should consist of 10 digits";
-    private static final String PASSPORT_NOTE = "Should consist of 10 digits";
-    private static final String NAME_REGEX = "^[A-Za-z0-9_'-.\\s]+$";
+    public static final String PHONE_NUMBER_NOTE = "Should consist of 10 digits";
+    public static final String PASSPORT_NOTE = "Should consist of 10 digits";
+    public static final int NAME_LOWER_BOUNDARY = 1;
+    public static final int NAME_UPPER_BOUNDARY = 255;
+    public static final String NAME_NOTE = "Should be between 1 and 255 symbols";
+    public static final long PASSPORT_LOWER_BOUNDARY = 1000000000L;
+    public static final long PASSPORT_UPPER_BOUNDARY = 9999999999L;
+    public static final long PHONE_LOWER_BOUNDARY = 9000000000L;
+    public static final long PHONE_UPPER_BOUNDARY = 9999999999L;
 
-    @NotNull
-    @Size(min = 1, max = 255) @Pattern(regexp = NAME_REGEX)
+    @NotNull(message = NAME_NOTE)
+    @Size(min = NAME_LOWER_BOUNDARY, max = NAME_UPPER_BOUNDARY, message = NAME_NOTE)
     @ApiModelProperty(example = "Ivan")
     private String firstName;
 
-    @NotNull @Size(min = 1, max = 255) @Pattern(regexp = NAME_REGEX)
+    @NotNull(message = NAME_NOTE)
+    @Size(min = NAME_LOWER_BOUNDARY, max = NAME_UPPER_BOUNDARY, message = NAME_NOTE)
     @ApiModelProperty(example = "Petrov")
     private String lastName;
 
-    @Min(value = 1000000000L, message = PASSPORT_NOTE)
-    @Max(value = 9999999999L, message = PASSPORT_NOTE)
+    @NotNull(message = PASSPORT_NOTE)
+    @Min(value = PASSPORT_LOWER_BOUNDARY, message = PASSPORT_NOTE)
+    @Max(value = PASSPORT_UPPER_BOUNDARY, message = PASSPORT_NOTE)
     @ApiModelProperty(example = "1385698006")
     private Long passport;
 
-    @NotNull
-    @Min(value = 9000000000L, message = PHONE_NUMBER_NOTE)
-    @Max(value = 9999999999L, message = PHONE_NUMBER_NOTE)
+    @NotNull(message = PHONE_NUMBER_NOTE)
+    @Min(value = PHONE_LOWER_BOUNDARY, message = PHONE_NUMBER_NOTE)
+    @Max(value = PHONE_UPPER_BOUNDARY, message = PHONE_NUMBER_NOTE)
     @ApiModelProperty(example = "9999199299")
     private Long phoneNumber;
 }

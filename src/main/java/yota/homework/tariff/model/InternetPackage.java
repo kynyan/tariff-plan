@@ -1,7 +1,6 @@
 package yota.homework.tariff.model;
 
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import yota.homework.tariff.dto.InternetPackageDto;
 
 import javax.persistence.Entity;

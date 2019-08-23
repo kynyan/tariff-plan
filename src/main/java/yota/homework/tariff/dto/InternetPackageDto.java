@@ -13,10 +13,13 @@ import javax.validation.constraints.PositiveOrZero;
 @NoArgsConstructor
 @AllArgsConstructor
 public class InternetPackageDto {
-    @PositiveOrZero
+    public static final String PACKAGE_NOTE = "Should not be negative";
+
+    @PositiveOrZero(message = PACKAGE_NOTE)
     @ApiModelProperty(example = "3.2")
     private Double gigaBytes;
-    @PositiveOrZero
+
+    @PositiveOrZero(message = PACKAGE_NOTE)
     @ApiModelProperty(example = "30")
-    private int daysLeft;
+    private Integer daysLeft;
 }
