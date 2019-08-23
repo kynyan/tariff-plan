@@ -10,7 +10,7 @@ import yota.homework.tariff.service.SimCardService;
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping(path = "/api/sim/{phoneNumber}")
+@RequestMapping(path = "/sim/{phoneNumber}")
 @RequiredArgsConstructor
 public class PackageController {
     private final SimCardService simCardService;

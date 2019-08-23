@@ -9,6 +9,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -25,8 +26,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Configuration
+@PropertySource("classpath:application.properties")
 @EnableTransactionManagement
-@ComponentScan("yota.homework.tariff.model") @EnableJpaRepositories("yota.homework.tariff.repository")
+@ComponentScan({"yota.homework.tariff.model", "yota.homework.tariff.util"})
+@EnableJpaRepositories("yota.homework.tariff.repository")
 @Slf4j
 public class DbConfig {
 
@@ -65,7 +68,7 @@ public class DbConfig {
         props.put("hibernate.implicit_naming_strategy", ImplicitNamingStrategyLegacyHbmImpl.class);
         props.put("hibernate.physical_naming_strategy", PhysicalNamingStrategyImpl.class);
         props.put("hibernate.id.new_generator_mappings", true);
-//        props.put("hibernate.dialect", hibernateDialect);
+        props.put("hibernate.dialect", hibernateDialect);
 
         LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
         factory.setJpaVendorAdapter(vendorAdapter);

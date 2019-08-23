@@ -1,25 +1,24 @@
 package yota.homework.tariff.dto;
 
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
+import java.lang.Long;
 import java.util.Set;
 
 import static io.qala.datagen.RandomShortApi.Long;
 import static io.qala.datagen.RandomShortApi.*;
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static yota.homework.tariff.dto.UserDto.*;
-
-import java.lang.Long;
 
 public class UserDtoTest {
     private static Validator validator;
 
-    @BeforeClass
+    @BeforeAll
     public static void setUpValidator() {
         ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
         validator = factory.getValidator();
@@ -66,14 +65,5 @@ public class UserDtoTest {
 
         assertEquals(1, constraintViolations.size() );
         assertEquals(PHONE_NUMBER_NOTE, constraintViolations.iterator().next().getMessage());
-    }
-
-    private UserDto randomUserDto() {
-        return UserDto.builder()
-                .firstName(unicode(NAME_LOWER_BOUNDARY, NAME_UPPER_BOUNDARY))
-                .lastName(unicode(NAME_LOWER_BOUNDARY, NAME_UPPER_BOUNDARY))
-                .phoneNumber(Long(PHONE_LOWER_BOUNDARY, PHONE_UPPER_BOUNDARY))
-                .passport(Long(PASSPORT_LOWER_BOUNDARY, PASSPORT_UPPER_BOUNDARY))
-                .build();
     }
 }

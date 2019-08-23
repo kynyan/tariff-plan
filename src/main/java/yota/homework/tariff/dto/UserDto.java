@@ -8,6 +8,9 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import static io.qala.datagen.RandomShortApi.Long;
+import static io.qala.datagen.RandomShortApi.unicode;
+
 @Getter @Setter
 @Builder
 @NoArgsConstructor
@@ -44,4 +47,13 @@ public class UserDto {
     @Max(value = PHONE_UPPER_BOUNDARY, message = PHONE_NUMBER_NOTE)
     @ApiModelProperty(example = "9999199299")
     private Long phoneNumber;
+
+    public static UserDto randomUserDto() {
+        return UserDto.builder()
+                .firstName(unicode(NAME_LOWER_BOUNDARY, NAME_UPPER_BOUNDARY))
+                .lastName(unicode(NAME_LOWER_BOUNDARY, NAME_UPPER_BOUNDARY))
+                .phoneNumber(Long(PHONE_LOWER_BOUNDARY, PHONE_UPPER_BOUNDARY))
+                .passport(Long(PASSPORT_LOWER_BOUNDARY, PASSPORT_UPPER_BOUNDARY))
+                .build();
+    }
 }

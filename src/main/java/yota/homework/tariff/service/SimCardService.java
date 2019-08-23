@@ -14,6 +14,7 @@ import yota.homework.tariff.repository.PackageRepository;
 import yota.homework.tariff.repository.SimRepository;
 import yota.homework.tariff.util.Merger;
 
+import java.time.Instant;
 import java.util.Comparator;
 
 @Service
@@ -76,19 +77,22 @@ public class SimCardService {
     private void updatePlanInternetPackage(Plan tariffPlan, InternetPackageDto dto) {
         InternetPackage update = new InternetPackage(dto);
         if (tariffPlan.getInternetPackage() != null) {
-            update = merger.merge(update, tariffPlan.getInternetPackage());
+            InternetPackage merged = merger.merge(update, tariffPlan.getInternetPackage(), Instant.class);
+            tariffPlan.setInternetPackage(packageRepository.save(merged));
+        } else {
+            tariffPlan.setInternetPackage(packageRepository.save(update));
         }
-        else update = packageRepository.save(update);
-        tariffPlan.setInternetPackage(update);
+
     }
 
     private void updatePlanMinutesPackage(Plan tariffPlan, MinutesPackageDto dto) {
         MinutesPackage update = new MinutesPackage(dto);
         if (tariffPlan.getMinutesPackage() != null) {
-            update = merger.merge(update, tariffPlan.getMinutesPackage());
+            MinutesPackage merged = merger.merge(update, tariffPlan.getMinutesPackage(), Instant.class);
+            tariffPlan.setMinutesPackage(packageRepository.save(merged));
+        } else {
+            tariffPlan.setMinutesPackage(packageRepository.save(update));
         }
-        else update = packageRepository.save(update);
-        tariffPlan.setMinutesPackage(update);
     }
 
     private PackageDto convertToPackageDto(Plan plan) {

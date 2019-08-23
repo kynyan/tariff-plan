@@ -16,7 +16,7 @@ import javax.validation.Valid;
 public class UserController {
     private final UserService userService;
 
-    @PostMapping(path = "/api/user")
+    @PostMapping(path = "/user")
     @ApiOperation(httpMethod = "POST", value = "creates new user")
     public ResponseEntity createUser(@Valid @RequestBody UserDto dto) {
         return ResponseEntity.ok(userService.createUser(dto));
