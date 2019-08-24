@@ -13,17 +13,17 @@ import static io.qala.datagen.RandomShortApi.integer;
 import static io.qala.datagen.RandomShortApi.negativeDouble;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class PackageDtoTest {
+class PackageDtoTest {
     private static Validator validator;
 
     @BeforeAll
-    public static void setUpValidator() {
+    static void setUpValidator() {
         ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
         validator = factory.getValidator();
     }
 
     @Test
-    public void minutesPackageNumbersViolateBoundaries() {
+    void minutesPackageNumbersViolateBoundaries() {
         MinutesPackageDto minutesPackage = wrongMinutesPackage();
 
         Set<ConstraintViolation<MinutesPackageDto>> constraintViolations = validator.validate(minutesPackage);
@@ -34,7 +34,7 @@ public class PackageDtoTest {
     }
 
     @Test
-    public void internetPackageNumbersViolateBoundaries() {
+    void internetPackageNumbersViolateBoundaries() {
         InternetPackageDto internetPackage = wrongInternetPackage();
 
         Set<ConstraintViolation<InternetPackageDto>> constraintViolations = validator.validate(internetPackage);

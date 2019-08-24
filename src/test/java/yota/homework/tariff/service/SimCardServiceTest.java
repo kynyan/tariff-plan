@@ -31,7 +31,7 @@ import java.lang.Long;
 @ExtendWith(SpringExtension.class)
 @RepositoryTest
 @Import(SimCardService.class)
-public class SimCardServiceTest {
+class SimCardServiceTest {
     @Autowired
     private SimCardService simCardService;
     @Autowired
@@ -40,7 +40,7 @@ public class SimCardServiceTest {
     private EntityManager entityManager;
 
     @Test
-    public void shouldGetAvailableGigaBytesAndMinutes() {
+    void shouldGetAvailableGigaBytesAndMinutes() {
         Long randomPhoneNumber = Long(PHONE_LOWER_BOUNDARY, PHONE_UPPER_BOUNDARY);
         createSimCard(randomPhoneNumber);
 
@@ -52,7 +52,7 @@ public class SimCardServiceTest {
     }
 
     @Test
-    public void shouldThrowNiceException_ifSimCardNotFound() {
+    void shouldThrowNiceException_ifSimCardNotFound() {
         Long randomPhoneNumber = Long(PHONE_LOWER_BOUNDARY, PHONE_UPPER_BOUNDARY);
         createSimCard(randomPhoneNumber);
 
@@ -64,7 +64,7 @@ public class SimCardServiceTest {
     }
 
     @Test
-    public void shouldActivateOrBlockSimByPhoneNumber() {
+    void shouldActivateOrBlockSimByPhoneNumber() {
         Long randomPhoneNumber = Long(PHONE_LOWER_BOUNDARY, PHONE_UPPER_BOUNDARY);
         boolean activateOrBlock = bool();
 
@@ -76,7 +76,7 @@ public class SimCardServiceTest {
     }
 
     @Test
-    public void shouldUpdatePackageWithGigaBytesAndMinutes() {
+    void shouldUpdatePackageWithGigaBytesAndMinutes() {
         Long randomPhoneNumber = Long(PHONE_LOWER_BOUNDARY, PHONE_UPPER_BOUNDARY);
         createSimCard(randomPhoneNumber);
 

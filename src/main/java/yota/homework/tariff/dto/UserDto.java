@@ -19,8 +19,8 @@ public class UserDto {
     public static final String PHONE_NUMBER_NOTE = "Should consist of 10 digits";
     public static final String PASSPORT_NOTE = "Should consist of 10 digits";
     public static final int NAME_LOWER_BOUNDARY = 1;
-    public static final int NAME_UPPER_BOUNDARY = 255;
-    public static final String NAME_NOTE = "Should be between 1 and 255 symbols";
+    public static final int NAME_UPPER_BOUNDARY = 60;
+    public static final String NAME_NOTE = "Should be between 1 and 60 symbols";
     public static final long PASSPORT_LOWER_BOUNDARY = 1000000000L;
     public static final long PASSPORT_UPPER_BOUNDARY = 9999999999L;
     public static final long PHONE_LOWER_BOUNDARY = 9000000000L;

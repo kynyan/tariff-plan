@@ -15,17 +15,17 @@ import static io.qala.datagen.RandomShortApi.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static yota.homework.tariff.dto.UserDto.*;
 
-public class UserDtoTest {
+class UserDtoTest {
     private static Validator validator;
 
     @BeforeAll
-    public static void setUpValidator() {
+    static void setUpValidator() {
         ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
         validator = factory.getValidator();
     }
 
     @Test
-    public void nameLengthViolatesBoundaries() {
+    void nameLengthViolatesBoundaries() {
         String invalidFirstName = sample(nullOrEmpty(), unicode(NAME_UPPER_BOUNDARY + 1));
         String invalidLastName = sample(nullOrEmpty(), unicode(NAME_UPPER_BOUNDARY + 1));
         UserDto user = randomUserDto();
@@ -40,7 +40,7 @@ public class UserDtoTest {
     }
 
     @Test
-    public void passportLengthViolatesBoundaries() {
+    void passportLengthViolatesBoundaries() {
         Long tooShortNumber = Long(Long.MIN_VALUE, (PASSPORT_LOWER_BOUNDARY - 1));
         Long tooLongNumber = Long((PASSPORT_UPPER_BOUNDARY + 1), Long.MAX_VALUE);
         Long invalidPassportNumber = nullOr(sample(tooShortNumber, tooLongNumber));
@@ -54,7 +54,7 @@ public class UserDtoTest {
     }
 
     @Test
-    public void phoneNumberLengthViolatesBoundaries() {
+    void phoneNumberLengthViolatesBoundaries() {
         Long tooShortNumber = Long(Long.MIN_VALUE, (PHONE_LOWER_BOUNDARY - 1));
         Long tooLongNumber = Long((PHONE_UPPER_BOUNDARY + 1), Long.MAX_VALUE);
         Long invalidPhoneNumber = nullOr(sample(tooShortNumber, tooLongNumber));
