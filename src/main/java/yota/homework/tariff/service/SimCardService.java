@@ -69,7 +69,7 @@ public class SimCardService {
         SimCard simCard = simRepository.findByPhoneNumber(phoneNumber);
         if (simCard == null) {
             String errorMsg = "SIM card with " + phoneNumber + " phone number not found";
-            throw new NiceException(ErrorCode.ENTITY_NOT_FOUND, HttpStatus.INTERNAL_SERVER_ERROR, errorMsg);
+            throw new NiceException(ErrorCode.ENTITY_NOT_FOUND, HttpStatus.BAD_REQUEST, errorMsg);
         }
         return simCard;
     }
