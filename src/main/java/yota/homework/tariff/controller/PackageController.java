@@ -26,7 +26,7 @@ public class PackageController {
 
     @GetMapping(path = "/package")
     @ApiOperation(httpMethod = "GET", value = "gets available internet traffic and minutes")
-    public ResponseEntity<PackageDto> createActualMaterialsInParticipant(@PathVariable Long phoneNumber) {
+    public ResponseEntity<PackageDto> getPackage(@PathVariable("phone-number") Long phoneNumber) {
         return ResponseEntity.ok(simCardService.getGigsAndMinutesLeft(phoneNumber));
     }
 

@@ -9,8 +9,7 @@ import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
 import java.util.Set;
 
-import static io.qala.datagen.RandomShortApi.integer;
-import static io.qala.datagen.RandomShortApi.negativeDouble;
+import static io.qala.datagen.RandomShortApi.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class PackageDtoTest {
@@ -42,6 +41,17 @@ class PackageDtoTest {
         assertEquals(2, constraintViolations.size() );
         assertEquals(InternetPackageDto.PACKAGE_NOTE, constraintViolations.iterator().next().getMessage());
         assertEquals(InternetPackageDto.PACKAGE_NOTE, constraintViolations.iterator().next().getMessage());
+    }
+
+    @Test
+    void packageDaysLeftMustNotBeNull() {
+        InternetPackageDto internetPackage = new InternetPackageDto(positiveDouble(), null);
+        MinutesPackageDto minutesPackage = new MinutesPackageDto(positiveInteger(), null);
+        Set<ConstraintViolation<InternetPackageDto>> inetPackageViolations = validator.validate(internetPackage);
+        Set<ConstraintViolation<MinutesPackageDto>> minutesPackageViolations = validator.validate(minutesPackage);
+
+        assertEquals(InternetPackageDto.DAYS_NOTE, inetPackageViolations.iterator().next().getMessage());
+        assertEquals(MinutesPackageDto.DAYS_NOTE, minutesPackageViolations.iterator().next().getMessage());
     }
 
     private MinutesPackageDto wrongMinutesPackage() {

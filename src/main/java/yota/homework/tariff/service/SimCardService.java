@@ -75,7 +75,6 @@ public class SimCardService {
     }
 
     private void updatePlanInternetPackage(Plan tariffPlan, InternetPackageDto dto) {
-        //todo: fix null instant daysLeft when gigabytes and minutes are not null
         InternetPackage update = new InternetPackage(dto);
         if (tariffPlan.getInternetPackage() != null) {
             InternetPackage merged = merger.merge(update, tariffPlan.getInternetPackage(), Instant.class);
