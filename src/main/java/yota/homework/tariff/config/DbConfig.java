@@ -62,7 +62,7 @@ public class DbConfig {
     LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         vendorAdapter.setGenerateDdl(false);
-        vendorAdapter.setShowSql(true);
+        vendorAdapter.setShowSql(showSql);
 
         Map<String, Object> props = new HashMap<>();
         props.put("hibernate.implicit_naming_strategy", ImplicitNamingStrategyLegacyHbmImpl.class);
