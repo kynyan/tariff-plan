@@ -37,7 +37,12 @@ It's possible to activate/deactivate SIM card
 * H2 in memory database
 * Spring Data JPA
 * Hibernate
+* Flyway
 * Swagger
 * AssertJ
 * QALA datagen
 * Gradle
+
+## Entity Relation Diagram
+
+ ![alt text](https://github.com/kynyan/tariff/src/main/resources/ER_diagram.png "ERD")
