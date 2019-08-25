@@ -1,9 +1,9 @@
-Tariff
+Tariff plan
 ----------------------------------------
 
 This is a simple app which allows to create, store, and change internet traffic and minutes packages.
 
-## Run tariff with Gradle
+## Run tariff plan with Gradle
 
 * Checkout source code with git or simply download .zip package and unpack it
 * Open terminal (GitBash on Windows)
@@ -45,4 +45,4 @@ It's possible to activate/deactivate SIM card
 
 ## Entity Relation Diagram
 
- ![alt text](https://github.com/kynyan/tariff/src/main/resources/ER_diagram.png "ERD")
+ ![alt text](https://github.com/kynyan/tariff-plan/blob/master/src/main/resources/ER_diagram.png "ERD")
